@@ -10,10 +10,11 @@
   outputs = { self, nixpkgs, home-manager, hostname, ... }:
     let
       system = builtins.currentSystem;
+      currentHostName = builtins.getEnv "HOSTNAME";
     in
     {
       nixosConfigurations = {
-        "${builtins.currentHostName}" = import ./hosts/${builtins.currentHostName} {
+        "${currentHostName}" = import ./hosts/${currentHostName} {
           inherit nixpkgs home-manager hostname;
         };
       };
