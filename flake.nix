@@ -12,6 +12,7 @@
       system = builtins.currentSystem;
       currentHostName = builtins.getEnv "HOSTNAME";
     in
+    currentHostName
     {
       nixosConfigurations = {
         "${currentHostName}" = import ./hosts/${currentHostName} {
