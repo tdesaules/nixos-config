@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  username = "tdesaules";
+  username = "thibault";
   userEmail = "thibault@desaules.me";
 in
 {
@@ -10,8 +10,7 @@ in
     stateVersion = "24.11";
     username = "${username}";
     homeDirectory = "/home/${username}";
-    packages = with pkgs;
-    [
+    packages = with pkgs; [
       fish
       starship
       fastfetch

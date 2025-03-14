@@ -46,6 +46,11 @@
   environment.systemPackages = with pkgs; [
     vim
     git
+    fish
+    starship
+    fastfetch
+    lazygit
+    vscode
   ];
   system.stateVersion = "24.11";
   users.users.${currentUsername} = {

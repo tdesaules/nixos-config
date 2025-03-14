@@ -12,9 +12,12 @@
   outputs = { self, nixpkgs, home-manager, ... }:
   let
     currentHostName = builtins.elemAt (builtins.split "\n" (builtins.readFile /etc/hostname)) 0;
-    currentUsername = builtins.getEnv "USER";
+    currentUsername = builtins.getEnv "SUDO_USER";
     system = builtins.currentSystem;
-    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;  # Autoriser les paquets non libres
+    };
   in
   {
     nixosConfigurations."${currentHostName}" = nixpkgs.lib.nixosSystem
